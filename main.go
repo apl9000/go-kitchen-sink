@@ -16,7 +16,7 @@ import (
 var FS embed.FS
 
 func main() {
-	if err := initEnvironment(); err != nil { 
+	if err := initEnvironment(); err != nil {
 		log.Fatal(err)
 	}
 	router := chi.NewMux()
@@ -24,7 +24,7 @@ func main() {
 	router.Get("/", handler.MakeHandler(handler.HandleHomeIndex))
 	port := os.Getenv("SERVER_PORT")
 	slog.Info("Server is running on: ", "port", port)
-	log.Fatal(http.ListenAndServe(":" + port, router))
+	log.Fatal(http.ListenAndServe(":"+port, router))
 }
 
 func initEnvironment() error {
